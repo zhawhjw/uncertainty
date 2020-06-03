@@ -3,14 +3,14 @@ import numpy as np
 import torch.nn as nn
 from FCDensenet import FCDensenet
 from utils import train,valid,test
-from pycrayon import CrayonClient
+# from pycrayon import CrayonClient
 
 
-cc = CrayonClient(hostname="localhost")
+# cc = CrayonClient(hostname="localhost")
 data = torch.load('polyp_data.pth')
 
 f = "FCDensenet.pth"
-FCDensenet_experiment = cc.create_experiment("FCDensenet_experiment")
+# FCDensenet_experiment = cc.create_experiment("FCDensenet_experiment")
 
 batch_size = 2
 n_tr_batch = len(data[0]) // batch_size
@@ -60,17 +60,17 @@ for epoch in range(n_epochs):
 
     patience += 1
         
-    FCDensenet_experiment.add_scalar_value("Cost",np.mean(c,0,dtype='float64'))
-    
-    FCDensenet_experiment.add_scalar_value("Mean Accuracy Validation",np.mean(v,0,dtype='float64')[0])
-    FCDensenet_experiment.add_scalar_value("Background IoU Validation",np.mean(v,0,dtype='float64')[1])
-    FCDensenet_experiment.add_scalar_value("Polyp IoU Validation",np.mean(v,0,dtype='float64')[2])
-    FCDensenet_experiment.add_scalar_value("Mean IoU Validation",np.mean(v,0,dtype='float64')[3])
-    
-    FCDensenet_experiment.add_scalar_value("Mean Accuracy Test",np.mean(l,0,dtype='float64')[0])
-    FCDensenet_experiment.add_scalar_value("Background IoU Test",np.mean(l,0,dtype='float64')[1])
-    FCDensenet_experiment.add_scalar_value("Polyp IoU Test",np.mean(l,0,dtype='float64')[2])
-    FCDensenet_experiment.add_scalar_value("Mean IoU Test",np.mean(l,0,dtype='float64')[3])
+    # FCDensenet_experiment.add_scalar_value("Cost",np.mean(c,0,dtype='float64'))
+    #
+    # FCDensenet_experiment.add_scalar_value("Mean Accuracy Validation",np.mean(v,0,dtype='float64')[0])
+    # FCDensenet_experiment.add_scalar_value("Background IoU Validation",np.mean(v,0,dtype='float64')[1])
+    # FCDensenet_experiment.add_scalar_value("Polyp IoU Validation",np.mean(v,0,dtype='float64')[2])
+    # FCDensenet_experiment.add_scalar_value("Mean IoU Validation",np.mean(v,0,dtype='float64')[3])
+    #
+    # FCDensenet_experiment.add_scalar_value("Mean Accuracy Test",np.mean(l,0,dtype='float64')[0])
+    # FCDensenet_experiment.add_scalar_value("Background IoU Test",np.mean(l,0,dtype='float64')[1])
+    # FCDensenet_experiment.add_scalar_value("Polyp IoU Test",np.mean(l,0,dtype='float64')[2])
+    # FCDensenet_experiment.add_scalar_value("Mean IoU Test",np.mean(l,0,dtype='float64')[3])
 
     if np.mean(v,0,dtype='float64')[2] > best_valid and epoch > 10 :
         best_valid = np.mean(v,0,dtype='float64')[2]

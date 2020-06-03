@@ -1,7 +1,7 @@
 import torch
 import numpy as np
-from fcn8_gb import FCN8_gb
-from segnet_gb import SegNet_gb
+# from fcn8_gb import FCN8_gb
+# from segnet_gb import SegNet_gb
 import torch.nn.functional as F
 from torch.autograd import Variable
 from torch.autograd import grad

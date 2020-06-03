@@ -56,4 +56,4 @@ class FCN32(nn.Module):
         out = out.view(2,-1)                                        # model is (N , c).
         out = out.permute(1,0)
 
-return out
+        return out
